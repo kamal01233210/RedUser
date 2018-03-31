@@ -1,0 +1,28 @@
+<h1>Users List</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each user}}
+    <tr>
+
+      <th scope="row">{{this.first_name}}</th>
+      <td>{{this.last_name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="">
+  <span>Page Count: </span> {{user.count}}
+  </div>
