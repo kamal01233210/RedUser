@@ -3,11 +3,14 @@ var exphbs = require('express-handlebars');
 var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var url = require('url');
+//var url = require('url');
 var redis = require('redis');
+//console.log(process.env.REDISCLOUD_URL);
+//var redisURL = url.parse(process.env.REDISCLOUD_URL);
+//console.log(redisURL);
+var client = redis.createClient(process.env.REDIS_URL);
 
-var redisURL = url.parse(process.env.REDISCLOUD_URL);
-var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+///var client = redis.createClient();
 var rateLimiter = require('express-rate-limit');
 
 var RedisStore = require('rate-limit-redis');
