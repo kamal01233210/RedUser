@@ -8,7 +8,17 @@ var redis = require('redis');
 //console.log(process.env.REDISCLOUD_URL);
 //var redisURL = url.parse(process.env.REDISCLOUD_URL);
 //console.log(redisURL);
-var client = redis.createClient(process.env.REDIS_URL);
+//var client = redis.createClient(process.env.REDIS_URL);
+
+if (process.env.REDISTOGO_URL) {
+    // TODO: redistogo connection
+    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+	var client = redis.createClient(rtg.port, rtg.hostname);
+
+	client.auth(rtg.auth.split(":")[1]);
+} else {
+    var client = redis.createClient();
+}
 
 ///var client = redis.createClient();
 var rateLimiter = require('express-rate-limit');
