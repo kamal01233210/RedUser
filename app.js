@@ -3,6 +3,7 @@ var exphbs = require('express-handlebars');
 var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var url = require('url');
 var redis = require('redis');
 
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
